@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>CopyEye — Copy any text you can see on your Android screen</title>
-<meta name="description" content="CopyEye lifts text off any Android screen — videos, Reels, Shorts, screenshots, games, PDFs and apps that block selection. English and Hindi, recognised on your phone. No internet permission at all. Free APK, 13 MB, Android 10+.">
+<meta name="description" content="CopyEye lifts text off any Android screen — videos, Reels, Shorts, screenshots, games, PDFs and apps that block selection. English and Hindi, recognised on your phone — nothing you scan or copy is ever sent anywhere. Free APK, 17 MB, Android 10+.">
 <link rel="canonical" href="https://copyeye.lzworth.in/">
 <meta name="theme-color" content="#0B0D14" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F7F7FB" media="(prefers-color-scheme: light)">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="CopyEye">
 <meta property="og:url" content="https://copyeye.lzworth.in/">
 <meta property="og:title" content="CopyEye — Copy any text you can see on your Android screen">
-<meta property="og:description" content="Tap a floating eye. Any text on screen becomes selectable — even inside video, images and apps that block copying. English and Hindi, read on your phone. No internet permission at all.">
+<meta property="og:description" content="Tap a floating eye. Any text on screen becomes selectable — even inside video, images and apps that block copying. English and Hindi, read on your phone. Nothing you scan or copy leaves the device.">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CopyEye — Copy any text you can see on your Android screen">
@@ -40,14 +40,14 @@
       "url": "https://copyeye.lzworth.in/",
       "downloadUrl": "https://copyeye.lzworth.in/#download",
       "inLanguage": ["en", "hi"],
-      "description": "CopyEye puts a small floating eye on your Android screen. Tap it and any visible text becomes selectable and copyable — including text inside videos, Reels, Shorts, photographs, games, PDFs and apps that block selection. Recognition runs entirely on the device in English and Hindi. The app declares no internet permission.",
+      "description": "CopyEye puts a small floating eye on your Android screen. Tap it and any visible text becomes selectable and copyable — including text inside videos, Reels, Shorts, photographs, games, PDFs and apps that block selection. Recognition runs entirely on the device in English and Hindi, and nothing you scan or copy is ever sent anywhere.",
       "featureList": [
         "Copy text from video and Reels",
         "Copy text from images and screenshots",
         "Copy from apps that block text selection",
         "English and Hindi (Devanagari) recognition",
         "Fully on-device OCR, works offline",
-        "No internet permission declared",
+        "Scans and copied text never leave the device",
         "Word, line and paragraph selection",
         "Optional local clipboard history"
       ],
@@ -99,7 +99,7 @@
           "name": "Does CopyEye work without internet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Completely. Both recognition models ship inside the app, so text recognition runs on your phone with no network call. The app declares no internet permission at all, which means it cannot open a network connection even if it wanted to."
+            "text": "Text recognition is completely on-device. Both models ship inside the app, so scanning runs on your phone and works in aeroplane mode. CopyEye does make one kind of network request \u2014 a check-in on launch that registers the install and asks whether it is suspended, sending only a device id, the name you chose and the app version. No screen, no recognised word and nothing you copy is ever sent anywhere."
           }
         },
         {
@@ -115,7 +115,7 @@
           "name": "Which Android versions does CopyEye support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Android 10 and every version above it. The download is about 13 MB for most phones."
+            "text": "Android 10 and every version above it. The download is about 17 MB for most phones."
           }
         },
         {
@@ -1332,7 +1332,7 @@ footer { border-top: 1px solid var(--line); padding-block: 40px 56px; }
           </a>
           <a class="btn btn--ghost" href="#how">See how it works</a>
         </div>
-        <p class="hero__meta">13 MB · Android 10+ · free · no account · no ads</p>
+        <p class="hero__meta">17 MB · Android 10+ · free · no sign-in · no ads</p>
       </div>
 
       <div class="eyewrap">
@@ -1582,16 +1582,18 @@ $ <strong>grep uses-permission AndroidManifest.xml</strong>
 $ <strong>grep INTERNET AndroidManifest.xml</strong>
   <span class="hit">no matches found</span>
 </div>
-        <!-- Said plainly here because Android will contradict the headline otherwise.
-             The app's own manifest asks for no network permission; the text-recognition
-             libraries it is built on declare INTERNET, and Android merges that in. So the
-             permission is on the list, and nothing in CopyEye ever uses it. Better that
-             you read that from us than find it yourself and assume the rest was a lie. -->
+        <!-- Stated up front because a reader who discovers a network call on their own will
+             assume the rest of this section was a lie. Two claims, kept separate on purpose:
+             *recognition* is entirely on-device and always will be, and *check-in* is a
+             separate, small, describable request. Collapsing them into "no network" would be
+             the easier sentence and the false one. -->
         <p style="margin-top:16px;font-size:14px;color:var(--text-2)">
-          One honest footnote: Android will show <em>INTERNET</em> among CopyEye's
-          permissions. It arrives with Google's on-device text-recognition libraries, not
-          from anything here — no screen, no scan and no copied word is ever sent anywhere.
-          Turn the phone to aeroplane mode and every part of the app still works.
+          One honest footnote. CopyEye asks for <em>INTERNET</em>, and it uses it — once per
+          launch, to register the install and ask whether it has been suspended. That request
+          carries a device id, the name you chose, and the version you are running. It does not
+          carry a screen, a recognised word, or anything you copied; no code path from the
+          scanner reaches the network at all. Recognition itself never leaves the phone, so
+          scanning still works in aeroplane mode.
         </p>
       </div>
     </div>
@@ -1637,12 +1639,12 @@ $ <strong>grep INTERNET AndroidManifest.xml</strong>
           <dd>10<small>Android 10 and above</small></dd>
         </div>
         <div class="spec">
-          <dt>Network calls</dt>
-          <dd>0<small>no internet permission</small></dd>
+          <dt>Scans sent anywhere</dt>
+          <dd>0<small>recognition never leaves the phone</small></dd>
         </div>
         <div class="spec">
           <dt>Price</dt>
-          <dd>Free<small>no ads, no account</small></dd>
+          <dd>Free<small>no ads, no sign-in</small></dd>
         </div>
       </dl>
     </div>
@@ -1662,8 +1664,10 @@ $ <strong>grep INTERNET AndroidManifest.xml</strong>
         </details>
         <details>
           <summary>Does it work without internet?</summary>
-          <p>Completely. Both language models are inside the app. There is no first-run download and
-             no server involved, which is why the app can declare no internet permission at all.</p>
+          <p>Recognition, completely. Both language models are inside the app, so there is no first-run
+             download and no server in the loop — scanning and copying work in aeroplane mode. The one
+             thing that needs a connection is the check-in on launch, and when it cannot reach
+             anything the app simply carries on.</p>
         </details>
         <details>
           <summary>Why does my phone show a screen-recording icon?</summary>
@@ -1807,7 +1811,7 @@ $ <strong>grep INTERNET AndroidManifest.xml</strong>
     <a href="https://vanshkashyap.lzworth.in/">Portfolio</a>
     <a href="https://techbyvansh.lzworth.in/">Tech by Vansh</a>
     <a href="/CopyEye.apk" download="CopyEye.apk">Download</a>
-    <span class="foot__end">On-device · no network</span>
+    <span class="foot__end">Recognition stays on your phone</span>
   </div>
 </footer>
 
